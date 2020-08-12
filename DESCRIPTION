@@ -1,11 +1,18 @@
 Package: glider
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Utility Functions for Usage with Wadwha Research Group
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: person("Anthony", "Chau", email = "chaua3@uci.edu", role = c("aut", "cre"))
+Description: glider is a package to speed up data query from Redcap databases
+  and to provide utility functions to transform raw data into useful measures
+  to answer research questions
+License: GPL-3
 Encoding: UTF-8
+Depends: R (>= 4.0.2)
 LazyData: true
+RoxygenNote: 7.1.1
+Suggests: 
+    testthat
+Imports: 
+    REDCapR,
+    rlang

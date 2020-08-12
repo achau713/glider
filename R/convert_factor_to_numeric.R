@@ -4,13 +4,20 @@
 #' as.numeric() converts the factor levels to numeric
 #' subsetting the factor column by as.numeric(levels()) gives the numeric form of the factor column
 #'
-#' CAREFUL: THERE IS NO "INTUITIVE" CONVERSION FROM FACTOR TO NUMERIC. For example, as.numeric(as.factor(x)) gives unexpected results.
 #'
-#' @param x a column of factor type
+#' @param x A vector of type factor
 #'
-#' @return a column of numeric type
+#' @return A vector of type numeric
 #'
 #' @examples
+#' scores <- factor(x = c("1", "2"))
+#' factor_to_numeric(scores)
 convert_factor_to_numeric <- function(x) {
-  as.numeric(levels(x))[x]
+  if(is.factor(x)){
+    return(as.numeric(levels(x))[x])
+  } else{
+    return(x)
+  }
 }
+
+

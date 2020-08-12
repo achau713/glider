@@ -12,11 +12,11 @@
 #' @export
 #'
 #' @examples pregnancy_metadata <- map(PregnancyTokens, ~ReadMetadata(token = .x, list_tokens = PregnancyTokens))
-ReadMetadata <- function(uri,
-                         token,
-                         fields = NULL,
-                         forms = NULL,
-                         list_tokens = NULL){
+read_redcap_metadata <- function(uri,
+                                 token,
+                                 fields = NULL,
+                                 forms = NULL,
+                                 list_tokens = NULL) {
 
   # Exception Handling:
   # If API request successful, then no issue.
@@ -31,7 +31,7 @@ ReadMetadata <- function(uri,
     )
 
     # Read metadata
-    redcap_metadata_read(
+    REDCapR::redcap_metadata_read(
       redcap_uri = uri,
       token = token,
       fields = fields,

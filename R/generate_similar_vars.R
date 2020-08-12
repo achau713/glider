@@ -1,14 +1,37 @@
+#' Create a vector of similar variable names
+#'
+#' @param base_exp String. Common phrase among variables
+#' @param affix Vector. Unique phrase to attach to base_exp
+#' @param prefix Boolean. Append attachment to the head of base_exp
+#' @param suffix Boolean. Append attachment to the tail of base_exp
+#'
+#' @return A vector of similar variable names. All variables names contain the affix.
+#' @export
+#'
+#' @examples
+#' generate_similar_vars(base_exp = "m1_blood", affix = 1:10, suffix = TRUE)
+#' generate_similar_vars(base_exp = "m1_blood", affix = c("weight", "height"), prefix = TRUE)
+#' generate_similar_vars(base_exp = c("t0_month", "t1_month"), affix = 1:12, suffix = TRUE)
 
-#' Generate a vector of variable names suffixed by a numerical index
-#'
-#' @param var_name a string containing the base variable phrase
-#' @param num_indices a vector of numerical indices. This number will be appended to var_name
-#'
-#' @return a vector of variable names with appended numeric suffixes
-#'
-#' @examples generate_similar_vars(varName = "m18_stai", num_indices = c(1, 3, 5))
-#' @examples generate_similar_vars(varName = "t0_dem", num_indices = seq(1:10))
-generate_similar_vars <- function(var_name, num_indices){
 
-  return(paste0(var_name, num_indices))
+generate_similar_vars <- function(base_exp, affix, prefix = NULL, suffix = NULL){
+
+  # default to suffix if both prefix and suffix are NULL
+  if(is.null(prefix) && is.null(suffix)){
+    suffix <- TRUE
+  }
+
+  # Handles case when base_exp is a vector. Repeat base_exp by length of affix
+  if(length(base_exp) > 1){
+    base_exp <- rep(base_exp, each = length(affix))
+  }
+
+  if(!is.null(prefix)){
+    return(paste0(affix, base_exp))
+  }
+
+  if(!is.null(suffix)){
+    return(paste0(base_exp, affix))
+  }
+
 }

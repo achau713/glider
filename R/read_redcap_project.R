@@ -17,7 +17,7 @@
 #' pregnancy_data <- map(PregnancyTokens, ~ReadProjects(token = .x, list_tokens = PregnancyTokens))
 #' infant_data <- map(InfantTokens, ~ReadProjects(token = .x, list_tokens = InfantTokens))
 
-read_redcap_project <- function(uri = "https://ci-redcap.hs.uci.edu/api/",
+read_redcap_project <- function(uri,
                                 token,
                                 fields = NULL,
                                 forms = NULL,

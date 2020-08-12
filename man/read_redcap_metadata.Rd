@@ -4,32 +4,25 @@
 \alias{read_redcap_metadata}
 \title{Read in metadata from Redcap project via Redcap API}
 \usage{
-read_redcap_metadata(
-  uri,
-  token,
-  fields = NULL,
-  forms = NULL,
-  list_tokens = NULL
-)
+read_redcap_metadata(uri, token, fields = NULL, forms = NULL)
 }
 \arguments{
-\item{uri}{A link to redcap server}
+\item{uri}{A link to a Redcap server.}
 
-\item{token}{A string granting access to a REDCAP project via the REDCAP API}
+\item{token}{A string that stores the API key which grants access to a REDCAP project.}
 
 \item{fields}{A string or a vector of strings. Indicates desired fields to query from REDCAP project.}
 
 \item{forms}{A string or a vector of strings. Indicates desired forms to query from REDCAP project.}
-
-\item{list_tokens}{A list of tokens granting accessing to multiple REDCAP projects via the REDCAP API}
 }
 \value{
-A data frame containing metadata about a Redcap project. Four columns are returned:
+A data frame containing metadata for a Redcap project. Four columns are returned:
 field_name, form_name, field_label, and select_choices_or_calculations.
 }
 \description{
 Read in metadata from Redcap project via Redcap API
 }
 \examples{
-pregnancy_metadata <- map(PregnancyTokens, ~ReadMetadata(token = .x, list_tokens = PregnancyTokens))
+read_redcap_metadata(uri = "path/to/Redcap/API/Server", token = "NAME_OF_TOKEN_IN_RENVIRON", raw_or_label = "label", raw_or_label_tokens = "label")
+lapply(get_environment_vars("^REDCAP") read_redcap_metadata(uri = "path/to/Redcap/API/Server", token = .x))
 }

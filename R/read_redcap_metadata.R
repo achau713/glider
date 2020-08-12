@@ -1,22 +1,21 @@
 
 #' Read in metadata from Redcap project via Redcap API
 #'
-#' @param uri A link to redcap server
-#' @param token A string granting access to a REDCAP project via the REDCAP API
+#' @param uri A link to a Redcap server.
+#' @param token A string that stores the API key which grants access to a REDCAP project.
 #' @param fields A string or a vector of strings. Indicates desired fields to query from REDCAP project.
 #' @param forms A string or a vector of strings. Indicates desired forms to query from REDCAP project.
-#' @param list_tokens A list of tokens granting accessing to multiple REDCAP projects via the REDCAP API
 #'
-#' @return A data frame containing metadata about a Redcap project. Four columns are returned:
+#' @return A data frame containing metadata for a Redcap project. Four columns are returned:
 #' field_name, form_name, field_label, and select_choices_or_calculations.
 #' @export
 #'
-#' @examples pregnancy_metadata <- map(PregnancyTokens, ~ReadMetadata(token = .x, list_tokens = PregnancyTokens))
+#' @examples read_redcap_metadata(uri = "path/to/Redcap/API/Server", token = "NAME_OF_TOKEN_IN_RENVIRON", raw_or_label = "label", raw_or_label_tokens = "label")
+#' lapply(get_environment_vars("^REDCAP") read_redcap_metadata(uri = "path/to/Redcap/API/Server", token = .x))
 read_redcap_metadata <- function(uri,
                                  token,
                                  fields = NULL,
-                                 forms = NULL,
-                                 list_tokens = NULL) {
+                                 forms = NULL) {
 
   # Exception Handling:
   # If API request successful, then no issue.
@@ -25,7 +24,7 @@ read_redcap_metadata <- function(uri,
     print(
       paste(
         names(Sys.getenv())[Sys.getenv() == token],
-        "Metadata requested at:",
+        "metadata requested at:",
         Sys.time()
       )
     )
@@ -36,8 +35,7 @@ read_redcap_metadata <- function(uri,
       token = token,
       fields = fields,
       forms = forms
-    )$data  %>%
-      select(field_name, form_name, field_label, select_choices_or_calculations)
+    )$data[, c("field_name", "form_name", "field_label", "select_choices_or_calculations")]
   },
 
   error = function(e){
@@ -46,7 +44,7 @@ read_redcap_metadata <- function(uri,
     print(
       paste(
         "Unable to load data dictionary from:",
-        names(list_tokens)[list_tokens == token]
+        names(Sys.getenv())[Sys.getenv() == token]
       )
     )
   })

@@ -6,7 +6,7 @@
 #' @param average_score Boolean. If true, compute the average score. Otherwise, compute the sum score.
 #'
 #' @return A data frame with new column of subscale scores. The new column name is concatanation of score_name and "_score"
-#'
+#' @export
 #' @examples compute_summary_score(stress_questionnaire, var_affix = "physical_stress", score_name = "physical_stress_sum")
 
 compute_summary_score <- function(df,

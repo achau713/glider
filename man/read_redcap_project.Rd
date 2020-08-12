@@ -10,14 +10,13 @@ read_redcap_project(
   fields = NULL,
   forms = NULL,
   raw_or_label = "raw",
-  raw_or_label_headers = "raw",
-  list_tokens = NULL
+  raw_or_label_headers = "raw"
 )
 }
 \arguments{
-\item{uri}{A link to redcap server}
+\item{uri}{A link to a Redcap server.}
 
-\item{token}{A string granting access to a REDCAP project via the REDCAP API}
+\item{token}{A string that stores the API key which grants access to a REDCAP project.}
 
 \item{fields}{A string or a vector of strings. Indicates desired fields to query from REDCAP project.}
 
@@ -26,8 +25,6 @@ read_redcap_project(
 \item{raw_or_label}{A string representing whether to include raw or labelled variable values. Two options: "raw" or "label"}
 
 \item{raw_or_label_headers}{A string representing whether to include raw or labelled variable names. Two options: "raw" or "label".}
-
-\item{list_tokens}{A list of tokens granting accessing to multiple REDCAP projects via the REDCAP API}
 }
 \value{
 A data frame containing Redcap project data
@@ -36,7 +33,6 @@ A data frame containing Redcap project data
 Read in data from Redcap project via Redcap API
 }
 \examples{
-ReadProjects(token = MRABToken, raw_or_label = "label", raw_or_label_tokens = "label")
-pregnancy_data <- map(PregnancyTokens, ~ReadProjects(token = .x, list_tokens = PregnancyTokens))
-infant_data <- map(InfantTokens, ~ReadProjects(token = .x, list_tokens = InfantTokens))
+read_redcap_project(uri = "path/to/Redcap/API/Server", token = "NAME_OF_TOKEN_IN_RENVIRON", raw_or_label = "label", raw_or_label_tokens = "label")
+lapply(get_environment_vars("^REDCAP") read_redcap_project(uri = "path/to/Redcap/API/Server", token = .x))
 }

@@ -8,6 +8,7 @@
 #' @param x A vector of type factor
 #'
 #' @return A vector of type numeric
+#' @export
 #'
 #' @examples
 #' scores <- factor(x = c("1", "2"))

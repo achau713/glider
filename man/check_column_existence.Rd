@@ -4,24 +4,17 @@
 \alias{check_column_existence}
 \title{Check if columns exist in a data frame}
 \usage{
-check_column_existence(df, col_names, list_df_name = NULL)
+check_column_existence(df, col_names)
 }
 \arguments{
 \item{df}{A data frame}
 
 \item{col_names}{A vector of column names}
-
-\item{list_df_name}{The name of a data frame when a list of data frames is supplied}
 }
 \value{
-Boolean indicating if all column names exist in the data frame.
+Boolean indicating if all specified column names exist in the data frame.
 Otherwise, a message ascertaining non-existence of columns is displayed
 }
 \description{
 Check if columns exist in a data frame
-}
-\examples{
-check_column_existence(pedimet, c("BPM", "Average_IBI_(ms)"))
-check_column_existence(pedimet, "...10")
-purrr::walk2(pedimet_list, names(pedimet_list), ~checkColumnExistence(df = .x, list_df_name = .y))
 }

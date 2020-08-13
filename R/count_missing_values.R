@@ -16,9 +16,9 @@
 count_missing_values <- function(df, cols = colnames(df)){
 
   # Count missing values: total, column-wise, row-wise
-  na_total_count <- count_total_missing_values(df[, cols])
-  na_colwise_count <- count_column_missing_values(df[, cols])
-  na_rowwise_count <- count_row_missing_values(df[, cols])
+  na_total_count <- count_total_missing_values(df[, cols, drop = FALSE])
+  na_colwise_count <- count_column_missing_values(df[, cols, drop = FALSE])
+  na_rowwise_count <- count_row_missing_values(df[, cols, drop = FALSE])
 
 
   return(

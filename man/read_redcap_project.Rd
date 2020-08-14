@@ -6,7 +6,7 @@
 \usage{
 read_redcap_project(
   uri,
-  token,
+  token_name,
   fields = NULL,
   forms = NULL,
   raw_or_label = "raw",
@@ -16,7 +16,7 @@ read_redcap_project(
 \arguments{
 \item{uri}{A link to a Redcap server.}
 
-\item{token}{A string that stores the API key which grants access to a REDCAP project.}
+\item{token_name}{Name of the environment variable that stores the API key which grants access to a REDCAP project.}
 
 \item{fields}{A string or a vector of strings. Indicates desired fields to query from REDCAP project.}
 
@@ -33,6 +33,6 @@ A data frame containing Redcap project data
 Read in data from Redcap project via Redcap API
 }
 \examples{
-read_redcap_project(uri = "path/to/Redcap/API/Server", token = "NAME_OF_TOKEN_IN_RENVIRON", raw_or_label = "label", raw_or_label_tokens = "label")
-lapply(get_environment_vars("^REDCAP") read_redcap_project(uri = "path/to/Redcap/API/Server", token = .x))
+read_redcap_project(uri = "path/to/Redcap/API/Server", token_name = "NAME_OF_token_name_IN_RENVIRON", raw_or_label = "label", raw_or_label_token_names = "label")
+lapply(get_environment_vars("^REDCAP") read_redcap_project(uri = "path/to/Redcap/API/Server", token_name = .x))
 }

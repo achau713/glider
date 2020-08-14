@@ -1,36 +1,25 @@
-#' Impute a specified value to a replacement value if values of the rest of the row is NA
+#' Impute values to a replacement value if a condition is true
 #'
-#' @param data a data frame
-#' @param impute_col column in data to perform imputation on. supply as character string
-#' @param var_prefix character vector of shared variable name
-#' @param vars_indices integer indices attached to var_prefix. Used to subset columns when
-#' checking for NA values.
+#' @param df A data frame
+#' @param impute_col A character vector specifying the column to perform imputation.
+#' @param condition A logical condition.
+#' @param replacement The replacement value if condition is true.
 #'
-#' @return a data frame. impute_col will have imputed values
+#' @return A data frame. The selected columns subsetted by var_affix contain changed values
+#' given the condition and replacement values.
 #'
 #' @examples
-#' impute_value(m1_cesd, m1_cesd_sum_score, var_prefix = "m1_cesd", indices = cesd_indices, replacement = NA)
-impute_value <- function(data,
+#' impute_value(df = iris, impute_col = "Species", condition = iris$species == "setosa", replacement = "Setosa")
+impute_value <- function(df,
                          impute_col,
-                         var_prefix,
-                         indices,
-                         replacement = NA) {
+                         condition,
+                         replacement) {
 
-  similar_vars <- generateSimilarVars(var_prefix, indices)
+  # Handle case when column is a factor column and replacement is not a factor level.
+  df[[impute_col]] <- as.character(df[[impute_col]])
 
-  impute_col <- enquo(impute_col)
+  df[[impute_col]][eval(quote(condition))] <- replacement
 
-  # check if all values in a row are NA
-  data <-
-    data %>%
-    rowwise() %>%
-    mutate(
-      # create column of booleans. True if all entries in a row are NA. False otherwise.
-      row_all_NA = all(is.na(c_across(matches(similar_vars)))),
-      # Replace column based on value of row_all_NA column
-      !!impute_col := ifelse(row_all_NA, replacement, !!impute_col)
-    )
-
-  return(data)
+  return(df)
 }
 

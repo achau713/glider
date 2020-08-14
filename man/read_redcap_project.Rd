@@ -14,7 +14,7 @@ read_redcap_project(
 )
 }
 \arguments{
-\item{uri}{A link to a Redcap server.}
+\item{uri}{Name of the environment variable that stores the link to a Redcap server.}
 
 \item{token_name}{Name of the environment variable that stores the API key which grants access to a REDCAP project.}
 

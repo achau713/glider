@@ -1,6 +1,6 @@
 #' Read in data from Redcap project via Redcap API
 #'
-#' @param uri A link to a Redcap server.
+#' @param uri Name of the environment variable that stores the link to a Redcap server.
 #' @param token_name Name of the environment variable that stores the API key which grants access to a REDCAP project.
 #' @param fields A string or a vector of strings. Indicates desired fields to query from REDCAP project.
 #' @param forms A string or a vector of strings. Indicates desired forms to query from REDCAP project.
@@ -23,6 +23,7 @@ read_redcap_project <- function(uri,
                                 raw_or_label_headers = "raw") {
 
   api_token <- Sys.getenv(token_name)
+  redcap_server_name <- Sys.getenv(uri)
 
   output <- tryCatch({
     print(

@@ -12,6 +12,6 @@
 #' get_environment_vars(pattern = "API_TOKEN")
 get_environment_vars <- function(pattern){
   matched_environ_names <- grepl(pattern, names(Sys.getenv()))
-  matched_environ_values <- Sys.getenv()[matched_environ_vars]
+  matched_environ_values <- Sys.getenv()[matched_environ_names]
   return(matched_environ_values)
 }

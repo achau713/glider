@@ -34,7 +34,7 @@ read_redcap_project <- function(uri,
       )
     )
     REDCapR::redcap_read(
-      redcap_uri = uri,
+      redcap_uri = redcap_server_name,
       token = api_token,
       fields = fields,
       forms = forms,

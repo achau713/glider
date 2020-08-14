@@ -1,7 +1,7 @@
 #' Read in data from Redcap project via Redcap API
 #'
 #' @param uri A link to a Redcap server.
-#' @param token A string that stores the API key which grants access to a REDCAP project.
+#' @param token_name Name of the environment variable that stores the API key which grants access to a REDCAP project.
 #' @param fields A string or a vector of strings. Indicates desired fields to query from REDCAP project.
 #' @param forms A string or a vector of strings. Indicates desired forms to query from REDCAP project.
 #' @param raw_or_label A string representing whether to include raw or labelled variable values. Two options: "raw" or "label"
@@ -12,11 +12,11 @@
 #' @return A data frame containing Redcap project data
 #' @export
 #'
-#' @examples read_redcap_project(uri = "path/to/Redcap/API/Server", token = "NAME_OF_TOKEN_IN_RENVIRON", raw_or_label = "label", raw_or_label_tokens = "label")
-#' lapply(get_environment_vars("^REDCAP") read_redcap_project(uri = "path/to/Redcap/API/Server", token = .x))
+#' @examples read_redcap_project(uri = "path/to/Redcap/API/Server", token_name = "NAME_OF_token_name_IN_RENVIRON", raw_or_label = "label", raw_or_label_token_names = "label")
+#' lapply(get_environment_vars("^REDCAP") read_redcap_project(uri = "path/to/Redcap/API/Server", token_name = .x))
 
 read_redcap_project <- function(uri,
-                                token,
+                                token_name,
                                 fields = NULL,
                                 forms = NULL,
                                 raw_or_label = "raw",
@@ -29,7 +29,7 @@ read_redcap_project <- function(uri,
   output <- tryCatch({
     print(
       paste(
-        names(Sys.getenv())[Sys.getenv() == token],
+        token_name,
         "project requested at:",
         Sys.time()
       )
@@ -37,7 +37,7 @@ read_redcap_project <- function(uri,
     # Read data
     REDCapR::redcap_read_oneshot(
       redcap_uri = uri,
-      token = token,
+      token_name = Sys.getenv(token_name),
       fields = fields,
       forms = forms,
       raw_or_label = raw_or_label,
@@ -51,7 +51,7 @@ read_redcap_project <- function(uri,
     print(
       paste(
         "Unable to load dataset from:",
-        names(Sys.getenv())[Sys.getenv() == token]
+        token_name
       )
     )
   })

@@ -22,10 +22,8 @@ read_redcap_project <- function(uri,
                                 raw_or_label = "raw",
                                 raw_or_label_headers = "raw") {
 
+  api_token <- Sys.getenv(token_name)
 
-  # Exception Handling:
-  # If API request successful, then no issue.
-  # If API request unsuccessful, print error message but continue running the function (when using map function)
   output <- tryCatch({
     print(
       paste(
@@ -34,10 +32,9 @@ read_redcap_project <- function(uri,
         Sys.time()
       )
     )
-    # Read data
-    REDCapR::redcap_read_oneshot(
+    REDCapR::redcap_read(
       redcap_uri = uri,
-      token_name = Sys.getenv(token_name),
+      token = api_token,
       fields = fields,
       forms = forms,
       raw_or_label = raw_or_label,

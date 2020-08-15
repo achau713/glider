@@ -18,9 +18,9 @@ into useful categories below:
 ### Data Quality Check
 1. `check_column_existence`
 2. `count_missing_values`
-  - `count_column_missing_values`
-  - `count_row_missing_values`
-  - `count_total_missing_values`
+    - `count_column_missing_values`
+    - `count_row_missing_values`
+    - `count_total_missing_values`
 3. `count_missing_values`
 
 

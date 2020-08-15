@@ -9,7 +9,7 @@
 #' field_name, form_name, field_label, and select_choices_or_calculations.
 #' @export
 #'
-#' @examples read_redcap_metadata(uri = "path/to/Redcap/API/Server", token = "NAME_OF_TOKEN_IN_RENVIRON", raw_or_label = "label", raw_or_label_tokens = "label")
+#' @examples read_redcap_metadata(uri = "path/to/Redcap/API/Server", token = "NAME_OF_TOKEN_IN_RENVIRON")
 #' mapply(read_redcap_metadata, token = get_environment_vars("^REDCAP"), uri = "path/to/Redcap/API/Server")
 read_redcap_metadata <- function(uri,
                                  token_name,

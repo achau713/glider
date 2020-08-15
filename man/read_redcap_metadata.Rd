@@ -4,16 +4,16 @@
 \alias{read_redcap_metadata}
 \title{Read in metadata from Redcap project via Redcap API}
 \usage{
-read_redcap_metadata(uri, token, fields = NULL, forms = NULL)
+read_redcap_metadata(uri, token_name, fields = NULL, forms = NULL)
 }
 \arguments{
 \item{uri}{A link to a Redcap server.}
 
-\item{token}{A string that stores the API key which grants access to a REDCAP project.}
-
 \item{fields}{A string or a vector of strings. Indicates desired fields to query from REDCAP project.}
 
 \item{forms}{A string or a vector of strings. Indicates desired forms to query from REDCAP project.}
+
+\item{token}{A string that stores the API key which grants access to a REDCAP project.}
 }
 \value{
 A data frame containing metadata for a Redcap project. Four columns are returned:
@@ -24,5 +24,5 @@ Read in metadata from Redcap project via Redcap API
 }
 \examples{
 read_redcap_metadata(uri = "path/to/Redcap/API/Server", token = "NAME_OF_TOKEN_IN_RENVIRON", raw_or_label = "label", raw_or_label_tokens = "label")
-lapply(get_environment_vars("^REDCAP") read_redcap_metadata(uri = "path/to/Redcap/API/Server", token = .x))
+mapply(read_redcap_metadata, token = get_environment_vars("^REDCAP"), uri = "path/to/Redcap/API/Server")
 }

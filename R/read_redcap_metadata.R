@@ -1,4 +1,3 @@
-
 #' Read in metadata from Redcap project via Redcap API
 #'
 #' @param uri A link to a Redcap server.
@@ -11,19 +10,19 @@
 #' @export
 #'
 #' @examples read_redcap_metadata(uri = "path/to/Redcap/API/Server", token = "NAME_OF_TOKEN_IN_RENVIRON", raw_or_label = "label", raw_or_label_tokens = "label")
-#' lapply(get_environment_vars("^REDCAP") read_redcap_metadata(uri = "path/to/Redcap/API/Server", token = .x))
+#' mapply(read_redcap_metadata, token = get_environment_vars("^REDCAP"), uri = "path/to/Redcap/API/Server")
 read_redcap_metadata <- function(uri,
-                                 token,
+                                 token_name,
                                  fields = NULL,
                                  forms = NULL) {
 
-  # Exception Handling:
-  # If API request successful, then no issue.
-  # If API request unsuccessful, print error message but continue running the function (when using map function)
+  redcap_server_name <- Sys.getenv(uri)
+  api_token <- Sys.getenv(token_name)
+
   output <- tryCatch({
     print(
       paste(
-        names(Sys.getenv())[Sys.getenv() == token],
+        token_name,
         "metadata requested at:",
         Sys.time()
       )
@@ -31,8 +30,8 @@ read_redcap_metadata <- function(uri,
 
     # Read metadata
     REDCapR::redcap_metadata_read(
-      redcap_uri = uri,
-      token = token,
+      redcap_uri = redcap_server_name,
+      token = api_token,
       fields = fields,
       forms = forms
     )$data[, c("field_name", "form_name", "field_label", "select_choices_or_calculations")]
@@ -44,7 +43,7 @@ read_redcap_metadata <- function(uri,
     print(
       paste(
         "Unable to load data dictionary from:",
-        names(Sys.getenv())[Sys.getenv() == token]
+        token_name
       )
     )
   })

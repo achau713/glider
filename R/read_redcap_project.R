@@ -13,8 +13,8 @@
 #' @export
 #'
 #' @examples read_redcap_project(uri = "path/to/Redcap/API/Server", token_name = "NAME_OF_token_name_IN_RENVIRON", raw_or_label = "label", raw_or_label_token_names = "label")
-#' lapply(get_environment_vars("^REDCAP") read_redcap_project(uri = "path/to/Redcap/API/Server", token_name = .x))
-
+#' mapply(read_redcap_metadata, token = get_environment_vars("^REDCAP"), uri = "path/to/Redcap/API/Server")
+#'
 read_redcap_project <- function(uri,
                                 token_name,
                                 fields = NULL,
@@ -22,8 +22,8 @@ read_redcap_project <- function(uri,
                                 raw_or_label = "raw",
                                 raw_or_label_headers = "raw") {
 
-  api_token <- Sys.getenv(token_name)
   redcap_server_name <- Sys.getenv(uri)
+  api_token <- Sys.getenv(token_name)
 
   output <- tryCatch({
     print(

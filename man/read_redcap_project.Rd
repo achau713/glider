@@ -34,5 +34,6 @@ Read in data from Redcap project via Redcap API
 }
 \examples{
 read_redcap_project(uri = "path/to/Redcap/API/Server", token_name = "NAME_OF_token_name_IN_RENVIRON", raw_or_label = "label", raw_or_label_token_names = "label")
-lapply(get_environment_vars("^REDCAP") read_redcap_project(uri = "path/to/Redcap/API/Server", token_name = .x))
+mapply(read_redcap_metadata, token = get_environment_vars("^REDCAP"), uri = "path/to/Redcap/API/Server")
+
 }

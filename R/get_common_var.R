@@ -1,6 +1,6 @@
 #' Get common variables from a list of data frames
 #'
-#' @param dfs A list of data frames or a single data frame.
+#' @param dfs A list of data frames
 #'
 #' @return A string or vector of strings containing the common variables.
 #' @export

@@ -18,5 +18,5 @@ frame to NA
 }
 \examples{
 df <- data.frame(a = c(NaN, 1, 2), b = c(1, 2, NaN))
-df[is_nan(df)] <- NA
+is_nan(df)
 }

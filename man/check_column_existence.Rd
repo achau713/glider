@@ -18,3 +18,6 @@ Otherwise, a message ascertaining non-existence of columns is displayed
 \description{
 Check if columns exist in a data frame
 }
+\examples{
+check_column_existence(mtcars, c("mpg", "disp"))
+}

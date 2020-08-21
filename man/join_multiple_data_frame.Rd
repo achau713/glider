@@ -21,3 +21,6 @@ A single data frame after joining each individual data frame in dfs.
 A wrapper to Reduce and merge in base R. Generalize to handle a list of data frames.
 Currently, there is an assumption that the name of the key column is the same for all data frames in the list
 }
+\examples{
+join_multiple_data_frame(list(df1, df2, df3), key = "sale_id", join_type = "inner")
+}

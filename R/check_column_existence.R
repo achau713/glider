@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' check_column_existence(mtcars, c("mpg", "disp))
+#' check_column_existence(mtcars, c("mpg", "disp"))
 check_column_existence <- function(df, col_names){
 
   # save data frame name as label

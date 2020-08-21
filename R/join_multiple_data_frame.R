@@ -12,6 +12,7 @@
 #' @export
 #'
 #' @examples
+#' join_multiple_data_frame(list(df1, df2, df3), key = "sale_id", join_type = "inner")
 join_multiple_data_frame <- function(dfs, key, join_type){
 
 

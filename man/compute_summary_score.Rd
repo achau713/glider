@@ -6,6 +6,7 @@
 \usage{
 compute_summary_score(
   df,
+  id_affix,
   var_affix,
   score_name,
   score_type = "average",
@@ -14,6 +15,8 @@ compute_summary_score(
 }
 \arguments{
 \item{df}{A data frame}
+
+\item{id_affix}{A character vector of column(s) that uniquely identify a row}
 
 \item{var_affix}{A string forming the variable name pattern. Specifies which columns to use to compute a score}
 

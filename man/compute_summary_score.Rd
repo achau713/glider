@@ -4,7 +4,13 @@
 \alias{compute_summary_score}
 \title{Compute sum and average scores}
 \usage{
-compute_summary_score(df, var_affix, score_name, score_type = "average")
+compute_summary_score(
+  df,
+  var_affix,
+  score_name,
+  score_type = "average",
+  suffix = "_score"
+)
 }
 \arguments{
 \item{df}{A data frame}
@@ -14,6 +20,8 @@ compute_summary_score(df, var_affix, score_name, score_type = "average")
 \item{score_name}{The name of the score variable}
 
 \item{score_type}{The name of the score type. Currently supports: {average, sum}}
+
+\item{suffix}{Informative suffix to append to variable name.}
 }
 \value{
 A data frame with new column of subscale scores. The new column name is concatanation of score_name and "_score"

@@ -4,6 +4,7 @@
 #' @param var_affix A string forming the variable name pattern. Specifies which columns to use to compute a score
 #' @param score_name The name of the score variable
 #' @param score_type The name of the score type. Currently supports: {average, sum}
+#' @param suffix Informative suffix to append to variable name.
 #'
 #' @return A data frame with new column of subscale scores. The new column name is concatanation of score_name and "_score"
 #' @export
@@ -12,10 +13,10 @@
 compute_summary_score <- function(df,
                                   var_affix,
                                   score_name,
-                                  score_type = "average") {
+                                  score_type = "average",
+                                  suffix = "_score") {
   # Append with informative suffix
-  score_name <- paste0(score_name, "_score")
-
+  score_name <- paste0(score_name, suffix)
 
   # Subset data frame by relevant columns to use in score computation
   df <- subset_column(df, var_affix)

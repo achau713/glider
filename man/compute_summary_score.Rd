@@ -4,34 +4,23 @@
 \alias{compute_summary_score}
 \title{Compute sum and average scores}
 \usage{
-compute_summary_score(
-  df,
-  id_affix,
-  var_affix,
-  score_name,
-  score_type = "average",
-  suffix = "_score"
-)
+compute_summary_score(df, pattern, score_name, score_type = "average")
 }
 \arguments{
 \item{df}{A data frame}
 
-\item{id_affix}{A character vector of column(s) that uniquely identify a row}
+\item{pattern}{A regex string specifying which variables to compute summary scores on.}
 
-\item{var_affix}{A string forming the variable name pattern. Specifies which columns to use to compute a score}
-
-\item{score_name}{The name of the score variable}
+\item{score_name}{The name of the score variable. Specify as string.}
 
 \item{score_type}{The name of the score type. Currently supports: {average, sum}}
-
-\item{suffix}{Informative suffix to append to variable name.}
 }
 \value{
-A data frame with new column of subscale scores. The new column name is concatanation of score_name and "_score"
+A data frame with new summary score column. The new column name is score_name
 }
 \description{
 Compute sum and average scores
 }
 \examples{
-compute_summary_score(stress_questionnaire, var_affix = "physical_stress", score_name = "physical_stress_sum")
+compute_summary_score(stress_questionnaire, score_name = "physical_stress_average", score_type = "average")
 }

@@ -5,7 +5,7 @@
 #' @param condition A logical condition.
 #' @param replacement The replacement value if condition is true.
 #'
-#' @return A data frame. The selected columns subsetted by var_affix contain changed values
+#' @return A data frame. The selected columns that is subsetted by var_affix contain changed values
 #' given the condition and replacement values.
 #' @export
 #'

@@ -16,7 +16,7 @@ impute_value(df, impute_col, condition, replacement)
 \item{replacement}{The replacement value if condition is true.}
 }
 \value{
-A data frame. The selected columns subsetted by var_affix contain changed values
+A data frame. The selected columns that is subsetted by var_affix contain changed values
 given the condition and replacement values.
 }
 \description{

@@ -7,6 +7,7 @@
 #'
 #' @return A data frame. The selected columns subsetted by var_affix contain changed values
 #' given the condition and replacement values.
+#' @export
 #'
 #' @examples
 #' impute_value(df = iris, impute_col = "Species", condition = iris$species == "setosa", replacement = "Setosa")

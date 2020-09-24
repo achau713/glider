@@ -3,6 +3,7 @@
 #' @param df A data frame.
 #'
 #' @return Count of missing values in the data frame
+#' @export
 #'
 #' @examples count_total_missing_values(mtcars)
 count_total_missing_values <- function(df){

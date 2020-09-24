@@ -7,5 +7,5 @@
 #'
 #' @examples count_row_missing_values(mtcars)
 count_row_missing_values <- function(df){
-  rowSums(is.na(df))
+  df[["count_row_missing"]] <- rowSums(is.na(df))
 }

@@ -10,5 +10,5 @@ test_that("count_total_missing_values works when only 1 column is specified", {
 
   expect_setequal(count_missing_values(df, cols = c("a"))$na_total, count_total_missing)
   expect_setequal(count_missing_values(df, cols = c("a"))$na_colwise, count_col_missing)
-  expect_setequal(count_missing_values(df, cols = c("a"))$na_rowwise, count_row_missing)
+  expect_setequal(count_missing_values(df, cols = c("a"))$na_rowwise$count_row_missing, count_row_missing)
 })

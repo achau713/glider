@@ -2,10 +2,12 @@
 #'
 #' @param df A data frame.
 #'
-#' @return A vector of the count of missing values for each column. The vector is named if the data frame has row names.
+#' @return A data frame with new column containing the count of missing values for each column. The new column
+#' is called count_row_missing
 #' @export
 #'
 #' @examples count_row_missing_values(mtcars)
 count_row_missing_values <- function(df){
   df[["count_row_missing"]] <- rowSums(is.na(df))
+  return(df)
 }

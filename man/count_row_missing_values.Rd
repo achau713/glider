@@ -4,13 +4,18 @@
 \alias{count_row_missing_values}
 \title{Count number of missing values for each row in a data frame.}
 \usage{
-count_row_missing_values(df)
+count_row_missing_values(df, pattern, col_name = "count_row_missing")
 }
 \arguments{
 \item{df}{A data frame.}
+
+\item{pattern}{A regex string to subset columns.}
+
+\item{col_name}{Column name of the number of missing values for each row}
 }
 \value{
-A vector of the count of missing values for each column. The vector is named if the data frame has row names.
+A data frame with new column containing the count of missing values for each column. By default, the new column
+is called count_row_missing
 }
 \description{
 Count number of missing values for each row in a data frame.

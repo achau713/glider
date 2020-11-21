@@ -34,7 +34,7 @@ read_redcap_metadata <- function(uri,
       token = api_token,
       fields = fields,
       forms = forms
-    )$data[, c("field_name", "form_name", "field_label", "select_choices_or_calculations")]
+    )$data
   },
 
   error = function(e){

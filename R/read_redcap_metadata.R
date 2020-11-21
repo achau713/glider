@@ -29,12 +29,13 @@ read_redcap_metadata <- function(uri,
     )
 
     # Read metadata
-    REDCapR::redcap_metadata_read(
-      redcap_uri = redcap_server_name,
-      token = api_token,
-      fields = fields,
-      forms = forms
-    )$data
+    as.data.frame(
+      REDCapR::redcap_metadata_read(
+        redcap_uri = redcap_server_name,
+        token = api_token,
+        fields = fields,
+        forms = forms)[["data"]]
+    )
   },
 
   error = function(e){

@@ -12,3 +12,5 @@ check_condition <- function(df, x, condition){
   condition_col <- as.vector(df[,x])
   return(condition(condition_col))
 }
+
+
